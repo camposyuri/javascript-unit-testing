@@ -57,5 +57,5 @@ it("should throw an error if provided with multiple arguments instead of an arra
 
   const resultFn = () => add(num1, num2);
 
-  expect(resultFn).toThrow();
+  expect(resultFn).toThrow(/is not iterable/);
 });
