@@ -1,61 +1,63 @@
-import { expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { add } from "./math";
 
-it("should summarize all number values in an array.", () => {
-  //* Arrange -> Define the testing environment & values.
-  const numbers = [1, 2];
+describe("add()", () => {
+  it("should summarize all number values in an array.", () => {
+    //* Arrange -> Define the testing environment & values.
+    const numbers = [1, 2];
 
-  //* Act -> Run the actual code / function that should be tested.
-  const result = add(numbers);
+    //* Act -> Run the actual code / function that should be tested.
+    const result = add(numbers);
 
-  //* Asserts -> Evaluate the produced value / result and compare it to the expected value / result.
-  const expectedResult = numbers.reduce(
-    (prevValue, curValue) => prevValue + curValue,
-    0
-  );
-  expect(result).toBe(expectedResult);
-});
+    //* Asserts -> Evaluate the produced value / result and compare it to the expected value / result.
+    const expectedResult = numbers.reduce(
+      (prevValue, curValue) => prevValue + curValue,
+      0
+    );
+    expect(result).toBe(expectedResult);
+  });
 
-it("should yield NaN if a least one invalid number is provided.", () => {
-  const inputs = ["invalid", 1];
+  it("should yield NaN if a least one invalid number is provided.", () => {
+    const inputs = ["invalid", 1];
 
-  const result = add(inputs);
+    const result = add(inputs);
 
-  expect(result).toBeNaN();
-});
+    expect(result).toBeNaN();
+  });
 
-it("should yield a correct sum if an array of numeric string values is provided.", () => {
-  const numbers = ["1", "2"];
+  it("should yield a correct sum if an array of numeric string values is provided.", () => {
+    const numbers = ["1", "2"];
 
-  const result = add(numbers);
+    const result = add(numbers);
 
-  const expectedResults = numbers.reduce(
-    (prevValue, curValue) => +prevValue + +curValue,
-    0
-  );
+    const expectedResults = numbers.reduce(
+      (prevValue, curValue) => +prevValue + +curValue,
+      0
+    );
 
-  expect(result).toBe(expectedResults);
-});
+    expect(result).toBe(expectedResults);
+  });
 
-it("should yield 0 if an empty array is provided.", () => {
-  const numbers = [];
+  it("should yield 0 if an empty array is provided.", () => {
+    const numbers = [];
 
-  const result = add(numbers);
+    const result = add(numbers);
 
-  expect(result).toBe(0);
-});
+    expect(result).toBe(0);
+  });
 
-it("should throw an error if no value is passed into the function.", () => {
-  const resultFn = () => add();
+  it("should throw an error if no value is passed into the function.", () => {
+    const resultFn = () => add();
 
-  expect(resultFn).toThrow();
-});
+    expect(resultFn).toThrow();
+  });
 
-it("should throw an error if provided with multiple arguments instead of an array.", () => {
-  const num1 = 1;
-  const num2 = 2;
+  it("should throw an error if provided with multiple arguments instead of an array.", () => {
+    const num1 = 1;
+    const num2 = 2;
 
-  const resultFn = () => add(num1, num2);
+    const resultFn = () => add(num1, num2);
 
-  expect(resultFn).toThrow(/is not iterable/);
+    expect(resultFn).toThrow(/is not iterable/);
+  });
 });

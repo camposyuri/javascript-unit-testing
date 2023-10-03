@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { validateNumber, validateStringNotEmpty } from "./validation";
 
-describe("Function Validate", () => {
+describe("validateStringNotEmpty()", () => {
   it("should throw an error, if an empty string is provided.", () => {
     const emptyString = "";
     const resultFn = () => validateStringNotEmpty(emptyString);
@@ -13,7 +13,9 @@ describe("Function Validate", () => {
     const result = validateStringNotEmpty(notEmptyString);
     expect(result).toBeUndefined();
   });
+});
 
+describe("validateNumber()", () => {
   it("should throw an error, if NaN is provided.", () => {
     const isNotNumber = NaN;
     const resultFn = () => validateNumber(isNotNumber);
