@@ -18,10 +18,11 @@ import { User } from "./hooks";
  */
 
 describe("hooks", () => {
-  const testEmail = "test@test.com";
+  let testEmail;
   let user;
 
   beforeAll(() => {
+    testEmail = "test@test.com";
     user = new User(testEmail);
     console.log("beforeAll()");
   });
